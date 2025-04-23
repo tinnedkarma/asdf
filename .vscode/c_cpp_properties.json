@@ -9,7 +9,7 @@
             "defines": [
                 "DEBUG",
                 "USE_HAL_DRIVER",
-                "STM32F103x6"
+                "STM32F103xB"
             ],
             "compilerPath": "D:/stm32/arm-gnu-toolchain-14.2.rel1-mingw-w64-i686-arm-none-eabi/bin/arm-none-eabi-gcc.exe",
             "cStandard": "c99",
