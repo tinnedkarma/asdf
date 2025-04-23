@@ -41,7 +41,7 @@ extern CAN_HandleTypeDef hcan;
 void MX_CAN_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void amg88xx_send_can_data(CAN_TxHeaderTypeDef *txHeader, uint32_t *txMailbox, int16_t *buf, const int buf_size);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

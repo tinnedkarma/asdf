@@ -69,18 +69,6 @@ static CAN_TxHeaderTypeDef amg_can_tx_header =
 	.DLC = (uint32_t) 8
 };
 
-
-void amg88xx_send_can_data(int16_t *buf, const int buf_size) {
-	amg_can_tx_header.ExtId = CAN_BASE_ADDR;
-	
-	for (uint32_t i = 0; i < buf_size; i += 4 ) {
-		HAL_CAN_AddTxMessage(&hcan, &amg_can_tx_header, (uint8_t *)&buf[i], &TxMailbox);
-		amg_can_tx_header.ExtId++;
-		HAL_Delay(10);
-	}
-
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -126,7 +114,7 @@ int main(void)
 	while (1) {
 
     amg88xx_readPixelsRaw(amg88xx_pixels_buff);
-		amg88xx_send_can_data(amg88xx_pixels_buff, AMG88XX_BUFF_SIZE);
+		amg88xx_send_can_data(&amg_can_tx_header, &TxMailbox, amg88xx_pixels_buff, AMG88XX_BUFF_SIZE);
 		HAL_Delay(200);
     /* USER CODE END WHILE */
 

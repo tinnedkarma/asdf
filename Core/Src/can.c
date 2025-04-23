@@ -117,4 +117,15 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
 
 /* USER CODE BEGIN 1 */
 
+void amg88xx_send_can_data(CAN_TxHeaderTypeDef *txHeader, uint32_t *txMailbox, int16_t *buf, const int buf_size) {
+	txHeader->ExtId = CAN_BASE_ADDR;
+	
+	for (uint32_t i = 0; i < buf_size; i += 4 ) {
+		HAL_CAN_AddTxMessage(&hcan, txHeader, (uint8_t *)&buf[i], txMailbox);
+		txHeader->ExtId++;
+		HAL_Delay(10);
+	}
+
+}
+
 /* USER CODE END 1 */
