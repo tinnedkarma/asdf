@@ -61,7 +61,7 @@ Core/Src/system_stm32f1xx.c
 
 # ASM sources
 ASM_SOURCES =  \
-startup_stm32f103xb.s
+startup_stm32f103c8tx.s
 
 # ASM sources
 ASMM_SOURCES = 
